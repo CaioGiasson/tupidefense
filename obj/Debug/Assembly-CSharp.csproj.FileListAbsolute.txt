@@ -1,0 +1,2 @@
+/Users/caiogiasson/Documents/TupiDef/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+/Users/caiogiasson/Documents/TupiDef/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
