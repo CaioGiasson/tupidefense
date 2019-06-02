@@ -1,13 +1,16 @@
 ﻿<Properties StartupConfiguration="{D1F7B027-7E08-123E-96E6-7A620BD1060C}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/combatManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Recrutamento.cs">
     <Files>
-      <File FileName="Assets/Scripts/Personagem.cs" Line="11" Column="24" />
-      <File FileName="Assets/Scripts/Indio.cs" Line="34" Column="3" />
-      <File FileName="Assets/Scripts/Recrutamento.cs" Line="17" Column="24" />
-      <File FileName="Assets/Scripts/Explorador.cs" Line="5" Column="18" />
-      <File FileName="Assets/Scripts/Desembarque.cs" Line="30" Column="1" />
-      <File FileName="Assets/Scripts/combatManager.cs" Line="45" Column="24" />
+      <File FileName="Assets/Scripts/Personagem.cs" Line="40" Column="17" />
+      <File FileName="Assets/Scripts/Indio.cs" Line="38" Column="3" />
+      <File FileName="Assets/Scripts/Recrutamento.cs" Line="24" Column="1" />
+      <File FileName="Assets/Scripts/Explorador.cs" Line="39" Column="46" />
+      <File FileName="Assets/Scripts/Desembarque.cs" Line="28" Column="3" />
+      <File FileName="Assets/Scripts/combatManager.cs" Line="48" Column="27" />
+      <File FileName="Assets/Scripts/CaminhoPortugueses.cs" Line="16" Column="2" />
+      <File FileName="Assets/Scripts/CaminhoIndios.cs" Line="16" Column="2" />
+      <File FileName="Assets/Scripts/ScoreManager.cs" Line="11" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

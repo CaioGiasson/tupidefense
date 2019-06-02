@@ -4,37 +4,43 @@ using UnityEngine;
 
 public class Indio : Personagem {
 
-	public int maxPosicao = 270, offset = 0, amplitude = 9;
-	public GameObject flecha;
-
-	Vector3 p0;
-	float dX, dY;
+	Transform proximoPonto;
+	int qualPonto = 0;
 
 	void Start () {
+		proximoPonto = CaminhoIndios.pontos[0];
 	}
 
-	void Update () {
-		if ( posicao < maxPosicao ) 
-			posicao += this.velocidade / 20;
-		AtualizaMapa();
+	private void Update() {
+		if ( !atacando ) {
+			Vector3 dir = proximoPonto.position - transform.position;
+			transform.Translate(dir.normalized * ( velocidade * fatorVelocidade) * Time.deltaTime, Space.World);
+		}
+
+		if (Vector3.Distance(proximoPonto.position, transform.position) < 0.2f)
+			ProximoPonto();
+
+
+		UpdateVida();
 	}
 
-	public void SetP0(Vector3 posicao){
-		dX = Random.Range(-0.5f, 0.5f);
-		dY = Random.Range(-0.3f, 0.3f);
-		p0 = new Vector3( posicao.x + dX, posicao.y + dY, posicao.z );
-		transform.position = p0;
+	void ProximoPonto() {
+		qualPonto++;
+		if (qualPonto >= CaminhoIndios.pontos.Length) {
+			Parar();
+			return;
+		}
+		if (CaminhoIndios.pontos[qualPonto]!=null)
+			proximoPonto = CaminhoIndios.pontos[qualPonto];
 	}
 
-	void AtualizaMapa(){
-		float x = p0.x + posicao * amplitude / maxPosicao;
-		float dT = Mathf.Sin( Mathf.Deg2Rad * (posicao + offset) );
-		float y = p0.y - dT * amplitude/2;
-		float z = this.gameObject.transform.position.z;
-
-		this.gameObject.transform.position = new Vector3(x, y, z);
+	void Parar() {
 	}
 
+	protected void UpdateVida() {
+		float sx = (300.0f * vida) / vidaMax;
+		barraVida.transform.localScale = new Vector3(sx, 60f);
+	}
 	//private override  void Atacar(Personagem alvo) {
 	//	alvo.ReceberDano(this.ataque);
 	//	atacando = true;

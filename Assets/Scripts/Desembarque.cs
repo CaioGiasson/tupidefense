@@ -7,6 +7,7 @@ public class Desembarque : MonoBehaviour {
 	public Explorador unidade;
 
 	int coolDown = 0;
+	public int maxCoolDown = 6;
 
 	private void Start() {
 		StartCoroutine(BeginCooldown());
@@ -14,9 +15,9 @@ public class Desembarque : MonoBehaviour {
 
 	public void DoRecrutar() {
 		Explorador novo = Instantiate(unidade);
-		novo.SetP0(transform.position);
+		novo.transform.position = transform.position;
 		combatManager.manager.AddPortugues(novo);
-		coolDown = 3;
+		coolDown = maxCoolDown;
 	}
 
 	IEnumerator BeginCooldown() {

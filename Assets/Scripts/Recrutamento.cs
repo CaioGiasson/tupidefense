@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Recrutamento : MonoBehaviour {
 
-	public GameObject pontoSpawn;
+	public GameObject aldeia;
 	public Indio unidade;
 	public Text cdCounter;
 
@@ -21,7 +21,7 @@ public class Recrutamento : MonoBehaviour {
 		if (coolDown > 0) return;
 
 		Indio novo = Instantiate(unidade);
-		novo.SetP0(pontoSpawn.transform.position);
+		novo.transform.position = aldeia.transform.position;
 		combatManager.manager.AddIndio(novo);
 
 		coolDown = 5;

@@ -5,18 +5,28 @@ using UnityEngine;
 public class Personagem : MonoBehaviour {
 
 	public int vida, vidaMax, ataque, dano, alcance;
-	public float velocidade;
-	protected float posicao;
+	public float velocidade, fatorVelocidade = 0.25f;
 
-	bool atacando = false;
+	public SpriteRenderer barraVida;
+
+	public bool atacando;
 
 	void Start() {
 		vida = vidaMax;
 	}
 
 	public void Atacar( Personagem alvo ){
-		alvo.ReceberDano(this.ataque);
+		if (alvo == null) return;
+		if (alvo.vida < 1) return;
+
 		atacando = true;
+		alvo.ReceberDano(ataque);
+		StartCoroutine(Attacking());
+	}
+
+	IEnumerator Attacking(){
+		yield return new WaitForSeconds(combatManager.manager.attackCooldown);
+		atacando = false;
 	}
 
 	public void ReceberDano( int dano){
@@ -24,19 +34,15 @@ public class Personagem : MonoBehaviour {
 
 		if ( vida==0 ) {
 			combatManager.manager.Kill(this);
-			Destroy(this.gameObject);
-			print("ESSE AQUI MORREU");
 		}
 	}
 
 	public bool PodeAtacar(Personagem alvo){
-		bool retorno = false;
+		if (alvo == null) return false;
 
 		float dist = Vector3.Distance(alvo.transform.position, transform.position);
-		if (dist < alcance) retorno = true;
-
-		atacando = retorno;
-		return retorno;
+		if (dist < alcance) return true;
+		return false;
 	}
 
 }
